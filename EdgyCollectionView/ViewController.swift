@@ -78,8 +78,32 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCell
         cell.setCellMode(cellMode)
         cell.setBaseName(baseName)
+        cell.delegate = self
 
         return cell
     }
+}
 
+extension ViewController: PhotoCellDelegate {
+    func cell(_ cell: UICollectionViewCell, modeChangedTo cellMode: CellMode) {
+        guard let indexPath = collectionView.indexPath(for: cell) else {
+            return
+        }
+
+        baseData[indexPath.item].1 = cellMode
+
+        collectionView.reloadItems(at: [indexPath])
+    }
+
+    func didStartLongPress(at position: CGPoint) {
+    }
+
+    func didUpdateLongPress(at position: CGPoint) {
+    }
+
+    func didEndLongPress(at position: CGPoint) {
+    }
+
+    func didCancelLongPress(at position: CGPoint) {
+    }
 }
