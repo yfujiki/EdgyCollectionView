@@ -12,6 +12,8 @@
 		DB7B2D561E7B3EFC00E7C51D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7B2D541E7B3EFC00E7C51D /* Main.storyboard */; };
 		DB7B2D581E7B3EFC00E7C51D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB7B2D571E7B3EFC00E7C51D /* Assets.xcassets */; };
 		DB7B2D5B1E7B3EFC00E7C51D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7B2D591E7B3EFC00E7C51D /* LaunchScreen.storyboard */; };
+		DB7B2D641E7B445600E7C51D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7B2D621E7B445600E7C51D /* PhotoCell.swift */; };
+		DB7B2D651E7B445600E7C51D /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB7B2D631E7B445600E7C51D /* PhotoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		DB7B2D571E7B3EFC00E7C51D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB7B2D5A1E7B3EFC00E7C51D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB7B2D5C1E7B3EFC00E7C51D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB7B2D621E7B445600E7C51D /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		DB7B2D631E7B445600E7C51D /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				DB7B2D571E7B3EFC00E7C51D /* Assets.xcassets */,
 				DB7B2D591E7B3EFC00E7C51D /* LaunchScreen.storyboard */,
 				DB7B2D5C1E7B3EFC00E7C51D /* Info.plist */,
+				DB7B2D621E7B445600E7C51D /* PhotoCell.swift */,
+				DB7B2D631E7B445600E7C51D /* PhotoCell.xib */,
 			);
 			path = EdgyCollectionView;
 			sourceTree = "<group>";
@@ -124,6 +130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB7B2D651E7B445600E7C51D /* PhotoCell.xib in Resources */,
 				DB7B2D5B1E7B3EFC00E7C51D /* LaunchScreen.storyboard in Resources */,
 				DB7B2D581E7B3EFC00E7C51D /* Assets.xcassets in Resources */,
 				DB7B2D561E7B3EFC00E7C51D /* Main.storyboard in Resources */,
@@ -138,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB7B2D531E7B3EFC00E7C51D /* ViewController.swift in Sources */,
+				DB7B2D641E7B445600E7C51D /* PhotoCell.swift in Sources */,
 				DB7B2D511E7B3EFC00E7C51D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
