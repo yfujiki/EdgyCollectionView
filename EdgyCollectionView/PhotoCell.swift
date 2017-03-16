@@ -10,14 +10,30 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
 
+    private var baseName: String?
+    private var cellMode: CellMode = .photo
+
     @IBOutlet weak var imageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
+    func setCellMode(_ cellMode: CellMode) {
+        self.cellMode = cellMode
+        if let name = baseName {
+            setBaseName(name)
+        }
+    }
+
     func setBaseName(_ name: String) {
-        let image = UIImage(named: "\(name)_Photo")
-        imageView.image = image
+        baseName = name
+
+        switch cellMode {
+        case .logo:
+            imageView.image = UIImage(named: "\(name)_Logo")
+        default:
+            imageView.image = UIImage(named: "\(name)_Photo")
+        }
     }
 }

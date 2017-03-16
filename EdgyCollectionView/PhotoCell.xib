@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="620" height="367"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FQR-jg-jbx">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FQR-jg-jbx">
                         <rect key="frame" x="0.0" y="0.0" width="620" height="367"/>
                     </imageView>
                 </subviews>
@@ -33,7 +33,7 @@
             <connections>
                 <outlet property="imageView" destination="FQR-jg-jbx" id="m6d-Fd-SVL"/>
             </connections>
-            <point key="canvasLocation" x="310" y="210.5"/>
+            <point key="canvasLocation" x="-416" y="-179"/>
         </collectionViewCell>
     </objects>
 </document>

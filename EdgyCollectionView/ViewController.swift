@@ -16,8 +16,8 @@ enum CellMode {
 class ViewController: UIViewController {
 
     fileprivate var baseData: [(String, CellMode)] = [
-        ("NewYork", .photo),
-        ("Texas", .photo),
+        ("NewYork", .logo),
+        ("Texas", .logo),
         ("Illinois", .photo),
         ("Montana", .photo),
         ("California", .photo),
@@ -50,7 +50,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
         switch  cellMode {
         case .logo:
-            return CGSize(width: collectionView.bounds.width / 2, height: collectionView.bounds.width * 3 / 8)
+            let width = collectionView.bounds.width / 2 - collectionView.layoutMargins.left - collectionView.layoutMargins.right
+            let height = width * 3 / 8
+            return CGSize(width: width, height: height)
         default: // photo
             let photo = UIImage(named: "\(baseName)_Photo")!
             let width = collectionView.bounds.width
@@ -71,8 +73,10 @@ extension ViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let baseName = baseData[indexPath.item].0
+        let cellMode = baseData[indexPath.item].1
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCell
+        cell.setCellMode(cellMode)
         cell.setBaseName(baseName)
 
         return cell
