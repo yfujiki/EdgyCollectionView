@@ -9,11 +9,6 @@
 import UIKit
 import UICollectionViewLeftAlignedLayout
 
-enum CellMode {
-    case logo
-    case photo
-}
-
 class ViewController: UIViewController {
 
     fileprivate var baseData: [(String, CellMode)] = [

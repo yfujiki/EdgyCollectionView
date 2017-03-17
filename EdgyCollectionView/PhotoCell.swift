@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum CellMode {
+    case logo
+    case photo
+}
+
 protocol PhotoCellDelegate: class {
     func didStartZoomInForCell(_ cell: UICollectionViewCell)
     func didStartZoomOutForCell(_ cell: UICollectionViewCell)
