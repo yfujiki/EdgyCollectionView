@@ -63,14 +63,34 @@ class PhotoCell: UICollectionViewCell {
     }
 
     func pinched(gestureRecognizer: UIPinchGestureRecognizer) {
-        if gestureRecognizer.scale > 1 && cellMode == .logo {
-            // Expand
-            setCellMode(.photo)
-            delegate?.cell(self, modeChangedTo: .photo)
-        } else if gestureRecognizer.scale < 1 && cellMode == .photo{
-            // Shrink
-            setCellMode(.logo)
-            delegate?.cell(self, modeChangedTo: .logo)
+        let pinchScale = gestureRecognizer.scale
+
+        switch gestureRecognizer.state {
+        case .ended, .cancelled:
+            self.transform = CGAffineTransform.identity
+            return
+        default:
+            break
+        }
+
+        if pinchScale > 1 && cellMode == .logo {
+            if pinchScale > 2 {
+                self.transform = CGAffineTransform.identity
+                // Expand
+                setCellMode(.photo)
+                delegate?.cell(self, modeChangedTo: .photo)
+            } else {
+                self.transform = CGAffineTransform(scaleX: pinchScale, y: pinchScale)
+            }
+        } else if pinchScale < 1 && cellMode == .photo{
+            if pinchScale < 0.6 {
+                self.transform = CGAffineTransform.identity
+                // Shrink
+                setCellMode(.logo)
+                delegate?.cell(self, modeChangedTo: .logo)
+            } else {
+                self.transform = CGAffineTransform(scaleX: pinchScale, y: pinchScale)
+            }
         }
     }
 

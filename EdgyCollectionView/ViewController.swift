@@ -51,7 +51,11 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 4
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 4
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -65,7 +69,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
         switch  cellMode {
         case .logo:
-            let width = collectionView.bounds.width / 2 - collectionView.layoutMargins.left - collectionView.layoutMargins.right
+            let width = collectionView.bounds.width / 2 - 2
             let height = width * 3 / 4
             return CGSize(width: width, height: height)
         default: // photo
