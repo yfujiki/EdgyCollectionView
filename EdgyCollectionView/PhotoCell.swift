@@ -73,6 +73,8 @@ class PhotoCell: UICollectionViewCell {
             break
         }
 
+        superview?.bringSubview(toFront: self)
+
         if pinchScale > 1 && cellMode == .logo {
             if pinchScale > 2 {
                 self.transform = CGAffineTransform.identity
