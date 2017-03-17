@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UICollectionViewLeftAlignedLayout
 
 enum CellMode {
     case logo
@@ -36,7 +37,7 @@ class ViewController: UIViewController {
 
         virtualBaseData = baseData
 
-        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        collectionView.collectionViewLayout = UICollectionViewLeftAlignedLayout()
         collectionView.delegate = self
         collectionView.dataSource = self
 
