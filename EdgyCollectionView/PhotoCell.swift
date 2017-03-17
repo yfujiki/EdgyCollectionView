@@ -11,10 +11,10 @@ import UIKit
 protocol PhotoCellDelegate: class {
     func cell(_ cell: UICollectionViewCell, modeChangedTo cellMode: CellMode)
 
-    func didStartLongPress(at position: CGPoint)
-    func didUpdateLongPress(at position: CGPoint)
-    func didEndLongPress(at position: CGPoint)
-    func didCancelLongPress(at position: CGPoint)
+    func cell(_ cell: UICollectionViewCell, didStartLongPressAt position: CGPoint)
+    func cell(_ cell: UICollectionViewCell, didUpdateLongPressAt position: CGPoint)
+    func cell(_ cell: UICollectionViewCell, didEndLongPressAt position: CGPoint)
+    func cell(_ cell: UICollectionViewCell, didCancelLongPressAt position: CGPoint)
 }
 
 class PhotoCell: UICollectionViewCell {
@@ -27,6 +27,12 @@ class PhotoCell: UICollectionViewCell {
         return gestureRecognizer
     }()
 
+    private lazy var longPressGestureRecognizer: UILongPressGestureRecognizer = {
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(PhotoCell.longPressed))
+        gestureRecognizer.minimumPressDuration = 0.2
+        return gestureRecognizer
+    }()
+
     @IBOutlet weak var imageView: UIImageView!
 
     weak var delegate: PhotoCellDelegate?
@@ -35,6 +41,7 @@ class PhotoCell: UICollectionViewCell {
         super.awakeFromNib()
 
         self.addGestureRecognizer(pinchGestureRecognizer)
+        self.addGestureRecognizer(longPressGestureRecognizer)
     }
 
     func setCellMode(_ cellMode: CellMode) {
@@ -64,6 +71,23 @@ class PhotoCell: UICollectionViewCell {
             // Shrink
             setCellMode(.logo)
             delegate?.cell(self, modeChangedTo: .logo)
+        }
+    }
+
+    func longPressed(gestureRecognizer: UILongPressGestureRecognizer) {
+        let location = gestureRecognizer.location(in: self)
+
+        switch gestureRecognizer.state {
+        case .began:
+            delegate?.cell(self, didStartLongPressAt: location)
+        case .changed:
+            delegate?.cell(self, didUpdateLongPressAt: location)
+        case .ended:
+            delegate?.cell(self, didEndLongPressAt: location)
+        case .cancelled, .failed:
+            delegate?.cell(self, didCancelLongPressAt: location)
+        case .possible:
+            break   // do nothing
         }
     }
 }

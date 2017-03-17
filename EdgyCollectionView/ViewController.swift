@@ -25,10 +25,16 @@ class ViewController: UIViewController {
         ("Florida", .photo)
     ]
 
+    fileprivate var virtualBaseData: [(String, CellMode)]!
+
+    fileprivate var currentTargetIndexPath: IndexPath?
+
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        virtualBaseData = baseData
 
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         collectionView.delegate = self
@@ -45,8 +51,13 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let baseName = baseData[indexPath.item].0
-        let cellMode = baseData[indexPath.item].1
+        var baseName = baseData[indexPath.item].0
+        var cellMode = baseData[indexPath.item].1
+
+        if currentTargetIndexPath != nil {
+            baseName = virtualBaseData[indexPath.item].0
+            cellMode = virtualBaseData[indexPath.item].1
+        }
 
         switch  cellMode {
         case .logo:
@@ -72,8 +83,13 @@ extension ViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let baseName = baseData[indexPath.item].0
-        let cellMode = baseData[indexPath.item].1
+        var baseName = baseData[indexPath.item].0
+        var cellMode = baseData[indexPath.item].1
+
+        if currentTargetIndexPath != nil {
+            baseName = virtualBaseData[indexPath.item].0
+            cellMode = virtualBaseData[indexPath.item].1
+        }
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotoCell
         cell.setCellMode(cellMode)
@@ -81,6 +97,16 @@ extension ViewController: UICollectionViewDataSource {
         cell.delegate = self
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let data = baseData[sourceIndexPath.item]
+        baseData.remove(at: sourceIndexPath.item)
+        baseData.insert(data, at: destinationIndexPath.item)
+
+        virtualBaseData = baseData
+
+        collectionView.reloadItems(at: [sourceIndexPath, destinationIndexPath])
     }
 }
 
@@ -91,19 +117,48 @@ extension ViewController: PhotoCellDelegate {
         }
 
         baseData[indexPath.item].1 = cellMode
-
-        collectionView.reloadItems(at: [indexPath])
     }
 
-    func didStartLongPress(at position: CGPoint) {
+    func cell(_ cell: UICollectionViewCell, didStartLongPressAt position: CGPoint) {
+        let convertedPosition = cell.convert(position, to: collectionView)
+        if let indexPath = collectionView.indexPathForItem(at: convertedPosition) {
+            let success = collectionView.beginInteractiveMovementForItem(at: indexPath)
+            print("Begin interactive movement for \(indexPath.item) is \(success) ")
+            currentTargetIndexPath = indexPath
+        }
     }
 
-    func didUpdateLongPress(at position: CGPoint) {
+    func cell(_ cell: UICollectionViewCell, didUpdateLongPressAt position: CGPoint) {
+        let convertedPosition = cell.convert(position, to: collectionView)
+        collectionView.updateInteractiveMovementTargetPosition(convertedPosition)
+
+        if let indexPath = collectionView.indexPathForItem(at: convertedPosition) {
+            if let currentTargetIndexPath = currentTargetIndexPath {
+                if indexPath != currentTargetIndexPath {
+                    let from = currentTargetIndexPath.item
+                    let to = indexPath.item
+
+                    if from > to {
+                        let data = virtualBaseData.remove(at: from)
+                        virtualBaseData.insert(data, at: to)
+                    } else if from < to {
+                        let data = virtualBaseData.remove(at: from)
+                        virtualBaseData.insert(data, at: to)
+                    }
+
+                    self.currentTargetIndexPath = indexPath
+                }
+            }
+        }
     }
 
-    func didEndLongPress(at position: CGPoint) {
+    func cell(_ cell: UICollectionViewCell, didEndLongPressAt position: CGPoint) {
+        collectionView.endInteractiveMovement()
+        currentTargetIndexPath = nil
     }
 
-    func didCancelLongPress(at position: CGPoint) {
+    func cell(_ cell: UICollectionViewCell, didCancelLongPressAt position: CGPoint) {
+        collectionView.cancelInteractiveMovement()
+        currentTargetIndexPath = nil
     }
 }
