@@ -50,6 +50,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var baseName = baseData[indexPath.item].0
         var cellMode = baseData[indexPath.item].1
@@ -62,7 +66,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         switch  cellMode {
         case .logo:
             let width = collectionView.bounds.width / 2 - collectionView.layoutMargins.left - collectionView.layoutMargins.right
-            let height = width * 3 / 8
+            let height = width * 3 / 4
             return CGSize(width: width, height: height)
         default: // photo
             let photo = UIImage(named: "\(baseName)_Photo")!
@@ -117,6 +121,9 @@ extension ViewController: PhotoCellDelegate {
         }
 
         baseData[indexPath.item].1 = cellMode
+        virtualBaseData = baseData
+
+        collectionView.reloadItems(at: [indexPath])
     }
 
     func cell(_ cell: UICollectionViewCell, didStartLongPressAt position: CGPoint) {
