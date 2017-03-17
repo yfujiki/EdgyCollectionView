@@ -119,6 +119,15 @@ extension ViewController: UICollectionViewDataSource {
 }
 
 extension ViewController: PhotoCellDelegate {
+
+    func didStartZoomInForCell(_ cell: UICollectionViewCell) {
+        collectionView.bringSubview(toFront: cell)
+    }
+
+    func didStartZoomOutForCell(_ cell: UICollectionViewCell) {
+        collectionView.bringSubview(toFront: cell)
+    }
+
     func cell(_ cell: UICollectionViewCell, modeChangedTo cellMode: CellMode) {
         guard let indexPath = collectionView.indexPath(for: cell) else {
             return

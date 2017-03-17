@@ -9,6 +9,9 @@
 import UIKit
 
 protocol PhotoCellDelegate: class {
+    func didStartZoomInForCell(_ cell: UICollectionViewCell)
+    func didStartZoomOutForCell(_ cell: UICollectionViewCell)
+
     func cell(_ cell: UICollectionViewCell, modeChangedTo cellMode: CellMode)
 
     func cell(_ cell: UICollectionViewCell, didStartLongPressAt position: CGPoint)
@@ -73,9 +76,10 @@ class PhotoCell: UICollectionViewCell {
             break
         }
 
-        superview?.bringSubview(toFront: self)
-
         if pinchScale > 1 && cellMode == .logo {
+            if gestureRecognizer.state == .began {
+                delegate?.didStartZoomInForCell(self)
+            }
             if pinchScale > 2 {
                 self.transform = CGAffineTransform.identity
                 // Expand
@@ -84,7 +88,10 @@ class PhotoCell: UICollectionViewCell {
             } else {
                 self.transform = CGAffineTransform(scaleX: pinchScale, y: pinchScale)
             }
-        } else if pinchScale < 1 && cellMode == .photo{
+        } else if pinchScale < 1 && cellMode == .photo {
+            if gestureRecognizer.state == .began {
+                delegate?.didStartZoomOutForCell(self)
+            }
             if pinchScale < 0.6 {
                 self.transform = CGAffineTransform.identity
                 // Shrink
