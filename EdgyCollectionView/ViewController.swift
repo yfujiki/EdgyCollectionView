@@ -128,16 +128,17 @@ extension ViewController: PhotoCellDelegate {
 
     func cell(_ cell: UICollectionViewCell, didStartLongPressAt position: CGPoint) {
         let convertedPosition = cell.convert(position, to: collectionView)
+
         if let indexPath = collectionView.indexPathForItem(at: convertedPosition) {
             let success = collectionView.beginInteractiveMovementForItem(at: indexPath)
             print("Begin interactive movement for \(indexPath.item) is \(success) ")
             currentTargetIndexPath = indexPath
         }
+        setAlpha(0.7, toCellAt: convertedPosition)
     }
 
     func cell(_ cell: UICollectionViewCell, didUpdateLongPressAt position: CGPoint) {
         let convertedPosition = cell.convert(position, to: collectionView)
-        collectionView.updateInteractiveMovementTargetPosition(convertedPosition)
 
         if let indexPath = collectionView.indexPathForItem(at: convertedPosition) {
             if let currentTargetIndexPath = currentTargetIndexPath {
@@ -157,15 +158,35 @@ extension ViewController: PhotoCellDelegate {
                 }
             }
         }
+
+        collectionView.updateInteractiveMovementTargetPosition(convertedPosition)
+
+        if let indexPath = currentTargetIndexPath,
+            let cell = collectionView.cellForItem(at: indexPath) {
+            cell.alpha = 0.7
+        }
     }
 
     func cell(_ cell: UICollectionViewCell, didEndLongPressAt position: CGPoint) {
+        let convertedPosition = cell.convert(position, to: collectionView)
+        setAlpha(1.0, toCellAt: convertedPosition)
+
         collectionView.endInteractiveMovement()
         currentTargetIndexPath = nil
     }
 
     func cell(_ cell: UICollectionViewCell, didCancelLongPressAt position: CGPoint) {
+        let convertedPosition = cell.convert(position, to: collectionView)
+        setAlpha(1.0, toCellAt: convertedPosition)
+
         collectionView.cancelInteractiveMovement()
         currentTargetIndexPath = nil
+    }
+
+    func setAlpha(_ alpha: CGFloat, toCellAt position: CGPoint) {
+        if let indexPath = collectionView.indexPathForItem(at: position),
+            let cell = collectionView.cellForItem(at: indexPath) {
+            cell.alpha = alpha
+        }
     }
 }
