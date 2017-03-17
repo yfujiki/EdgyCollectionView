@@ -16,8 +16,8 @@ enum CellMode {
 class ViewController: UIViewController {
 
     fileprivate var baseData: [(String, CellMode)] = [
-        ("NewYork", .logo),
-        ("Texas", .logo),
+        ("NewYork", .photo),
+        ("Texas", .photo),
         ("Illinois", .photo),
         ("Montana", .photo),
         ("California", .photo),
