@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98EFADFE1E8591B8008BF01E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EFADFD1E8591B8008BF01E /* SWRevealViewController.m */; };
 		DB7B2D511E7B3EFC00E7C51D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7B2D501E7B3EFC00E7C51D /* AppDelegate.swift */; };
 		DB7B2D531E7B3EFC00E7C51D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7B2D521E7B3EFC00E7C51D /* ViewController.swift */; };
 		DB7B2D561E7B3EFC00E7C51D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB7B2D541E7B3EFC00E7C51D /* Main.storyboard */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		98EFADFC1E8591B8008BF01E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		98EFADFD1E8591B8008BF01E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		DB7B2D4D1E7B3EFC00E7C51D /* EdgyCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgyCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB7B2D501E7B3EFC00E7C51D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB7B2D521E7B3EFC00E7C51D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +46,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		98EFADFF1E8591F7008BF01E /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98EFADFC1E8591B8008BF01E /* SWRevealViewController.h */,
+				98EFADFD1E8591B8008BF01E /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		DB7B2D441E7B3EFC00E7C51D = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				DB7B2D6B1E7C804D00E7C51D /* EdgyCollectionView-BridgingHeader.h */,
+				98EFADFF1E8591F7008BF01E /* SWRevealViewController */,
 				DB7B2D501E7B3EFC00E7C51D /* AppDelegate.swift */,
 				DB7B2D521E7B3EFC00E7C51D /* ViewController.swift */,
 				DB7B2D541E7B3EFC00E7C51D /* Main.storyboard */,
@@ -180,6 +193,7 @@
 				DB7B2D531E7B3EFC00E7C51D /* ViewController.swift in Sources */,
 				DB7B2D641E7B445600E7C51D /* PhotoCell.swift in Sources */,
 				DB7B2D511E7B3EFC00E7C51D /* AppDelegate.swift in Sources */,
+				98EFADFE1E8591B8008BF01E /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
