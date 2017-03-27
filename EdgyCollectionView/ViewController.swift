@@ -25,7 +25,10 @@ class ViewController: UIViewController {
 
     fileprivate var currentTargetIndexPath: IndexPath?
 
+    //    fileprivate var revealViewController: SWRevealViewController?
+
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,12 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
 
         collectionView.register(UINib(nibName: "PhotoCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+
+        if let revealViewController = revealViewController() {
+            menuButton.target = revealViewController
+            menuButton.action = #selector(revealViewController.revealToggle(_:))
+            view.addGestureRecognizer(revealViewController.panGestureRecognizer())
+        }
     }
 
     override func didReceiveMemoryWarning() {
