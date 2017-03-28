@@ -11,21 +11,10 @@ import UICollectionViewLeftAlignedLayout
 
 class ViewController: UIViewController {
 
-    fileprivate var baseData: [(String, CellMode)] = [
-        ("NewYork", .photo),
-        ("Texas", .photo),
-        ("Illinois", .photo),
-        ("Montana", .photo),
-        ("California", .photo),
-        ("Oregon", .photo),
-        ("Florida", .photo)
-    ]
+    fileprivate var baseData: [(String, CellMode, Visibility)] = DataSource.shared.baseData
 
-    fileprivate var virtualBaseData: [(String, CellMode)]!
+    fileprivate var virtualBaseData: [(String, CellMode, Visibility)]! = DataSource.shared.virtualBaseData
 
-    fileprivate var currentTargetIndexPath: IndexPath?
-
-    //    fileprivate var revealViewController: SWRevealViewController?
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
