@@ -36,6 +36,8 @@ class ViewController: UIViewController {
             menuButton.action = #selector(revealViewController.revealToggle(_:))
             view.addGestureRecognizer(revealViewController.panGestureRecognizer())
         }
+
+        DataSource.shared.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -196,5 +198,11 @@ extension ViewController: PhotoCellDelegate {
             let cell = collectionView.cellForItem(at: indexPath) {
             cell.alpha = alpha
         }
+    }
+}
+
+extension ViewController: DataSourceDelegate {
+    func didUpdateBaseData() {
+        collectionView.reloadData()
     }
 }
