@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
     fileprivate var virtualBaseData: [(String, CellMode, Visibility)]! = DataSource.shared.virtualBaseData
 
+    fileprivate var currentTargetIndexPath: IndexPath?
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
