@@ -82,12 +82,12 @@ extension ViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return baseData.count
+        return DataSource.shared.visibleCells.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var baseName = baseData[indexPath.item].0
-        var cellMode = baseData[indexPath.item].1
+        var baseName = DataSource.shared.visibleCells[indexPath.item].0
+        var cellMode = DataSource.shared.visibleCells[indexPath.item].1
 
         if currentTargetIndexPath != nil {
             baseName = virtualBaseData[indexPath.item].0
@@ -103,11 +103,11 @@ extension ViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let data = baseData[sourceIndexPath.item]
-        baseData.remove(at: sourceIndexPath.item)
-        baseData.insert(data, at: destinationIndexPath.item)
+        let data = DataSource.shared.visibleCells[sourceIndexPath.item]
+        DataSource.shared.visibleCells.remove(at: sourceIndexPath.item)
+        DataSource.shared.visibleCells.insert(data, at: destinationIndexPath.item)
 
-        virtualBaseData = baseData
+        virtualBaseData = DataSource.shared.visibleCells
 
         collectionView.reloadItems(at: [sourceIndexPath, destinationIndexPath])
     }

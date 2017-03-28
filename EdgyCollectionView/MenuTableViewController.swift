@@ -17,18 +17,6 @@ class MenuTableViewController: UITableViewController {
         "Not Visible"
     ]
 
-    fileprivate var baseData: [(String, CellMode, Visibility)] = DataSource.shared.baseData
-
-    fileprivate var virtualBaseData: [(String, CellMode, Visibility)]! = DataSource.shared.virtualBaseData
-
-    fileprivate var visibleCells: [(String, CellMode, Visibility)] {
-        return baseData.filter { $0.2 == true }
-    }
-
-    fileprivate var invisibleCells: [(String, CellMode, Visibility)] {
-        return baseData.filter { $0.2 == false }
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,9 +29,9 @@ class MenuTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return visibleCells.count
+            return DataSource.shared.visibleCells.count
         } else {
-            return invisibleCells.count
+            return DataSource.shared.invisibleCells.count
         }
     }
 
@@ -51,8 +39,8 @@ class MenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         switch indexPath.section {
-        case 0: cell.textLabel?.text = visibleCells[indexPath.row].0
-        case 1: cell.textLabel?.text = invisibleCells[indexPath.row].0
+        case 0: cell.textLabel?.text = DataSource.shared.visibleCells[indexPath.row].0
+        case 1: cell.textLabel?.text = DataSource.shared.invisibleCells[indexPath.row].0
         default: break
         }
 
@@ -64,14 +52,14 @@ class MenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         guard let key = cell?.textLabel?.text,
-            let index = baseData.index(where: { $0.0 == key }) else {
+            let index = DataSource.shared.baseData.index(where: { $0.0 == key }) else {
             return tableView.deselectRow(at: indexPath, animated: false)
         }
 
-        baseData[index].2 = !baseData[index].2
+        DataSource.shared.baseData[index].2 = !DataSource.shared.baseData[index].2
 
         var newPath = indexPath
-        newPath.section = baseData[index].2 ? 0 : 1
+        newPath.section = DataSource.shared.baseData[index].2 ? 0 : 1
         newPath.row = 0
 
         tableView.moveRow(at: indexPath, to: newPath)
