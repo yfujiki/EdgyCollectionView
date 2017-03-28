@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98EFADFB1E858449008BF01E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EFADFA1E858449008BF01E /* DetailViewController.swift */; };
 		985E54221E89777C007970E7 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985E54211E89777C007970E7 /* MenuTableViewController.swift */; };
 		986E15BC1E8ABA94006BF409 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986E15BB1E8ABA94006BF409 /* DataSource.swift */; };
 		98EFADFE1E8591B8008BF01E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EFADFD1E8591B8008BF01E /* SWRevealViewController.m */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		98EFADFA1E858449008BF01E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		985E54211E89777C007970E7 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		986E15BB1E8ABA94006BF409 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		98EFADFC1E8591B8008BF01E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				98EFADFF1E8591F7008BF01E /* SWRevealViewController */,
 				DB7B2D501E7B3EFC00E7C51D /* AppDelegate.swift */,
 				DB7B2D521E7B3EFC00E7C51D /* ViewController.swift */,
+				98EFADFA1E858449008BF01E /* DetailViewController.swift */,
 				DB7B2D541E7B3EFC00E7C51D /* Main.storyboard */,
 				DB7B2D571E7B3EFC00E7C51D /* Assets.xcassets */,
 				DB7B2D591E7B3EFC00E7C51D /* LaunchScreen.storyboard */,
@@ -198,6 +201,7 @@
 			files = (
 				986E15BC1E8ABA94006BF409 /* DataSource.swift in Sources */,
 				DB7B2D531E7B3EFC00E7C51D /* ViewController.swift in Sources */,
+				98EFADFB1E858449008BF01E /* DetailViewController.swift in Sources */,
 				DB7B2D641E7B445600E7C51D /* PhotoCell.swift in Sources */,
 				985E54221E89777C007970E7 /* MenuTableViewController.swift in Sources */,
 				DB7B2D511E7B3EFC00E7C51D /* AppDelegate.swift in Sources */,

@@ -115,6 +115,13 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") else { return }
+        present(viewController, animated: true, completion: nil)
+    }
+}
+
 extension ViewController: PhotoCellDelegate {
 
     func didStartZoomInForCell(_ cell: UICollectionViewCell) {
