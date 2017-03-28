@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		985E54221E89777C007970E7 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985E54211E89777C007970E7 /* MenuTableViewController.swift */; };
 		98EFADFE1E8591B8008BF01E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EFADFD1E8591B8008BF01E /* SWRevealViewController.m */; };
 		DB7B2D511E7B3EFC00E7C51D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7B2D501E7B3EFC00E7C51D /* AppDelegate.swift */; };
 		DB7B2D531E7B3EFC00E7C51D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7B2D521E7B3EFC00E7C51D /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		985E54211E89777C007970E7 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		98EFADFC1E8591B8008BF01E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		98EFADFD1E8591B8008BF01E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		DB7B2D4D1E7B3EFC00E7C51D /* EdgyCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdgyCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 				DB7B2D5C1E7B3EFC00E7C51D /* Info.plist */,
 				DB7B2D621E7B445600E7C51D /* PhotoCell.swift */,
 				DB7B2D631E7B445600E7C51D /* PhotoCell.xib */,
+				985E54211E89777C007970E7 /* MenuTableViewController.swift */,
 			);
 			path = EdgyCollectionView;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			files = (
 				DB7B2D531E7B3EFC00E7C51D /* ViewController.swift in Sources */,
 				DB7B2D641E7B445600E7C51D /* PhotoCell.swift in Sources */,
+				985E54221E89777C007970E7 /* MenuTableViewController.swift in Sources */,
 				DB7B2D511E7B3EFC00E7C51D /* AppDelegate.swift in Sources */,
 				98EFADFE1E8591B8008BF01E /* SWRevealViewController.m in Sources */,
 			);
