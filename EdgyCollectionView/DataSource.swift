@@ -32,15 +32,13 @@ class DataSource {
         }
     }
 
-    public var virtualBaseData: [(String, CellMode, Visibility)]!
-
     public var visibleCells: [(String, CellMode, Visibility)] {
         get {
             return baseData.filter { $0.2 == true }
         }
 
         set {
-            for cell in visibleCells {
+            for cell in newValue {
                 guard let index = baseData.index(where: { $0.0 == cell.0 }) else { continue }
                 baseData[index] = cell
             }

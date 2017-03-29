@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     fileprivate var baseData: [(String, CellMode, Visibility)] = DataSource.shared.baseData
 
-    fileprivate var virtualBaseData: [(String, CellMode, Visibility)]! = DataSource.shared.virtualBaseData
+    fileprivate var virtualBaseData: [(String, CellMode, Visibility)]!
 
     fileprivate var currentTargetIndexPath: IndexPath?
 
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        virtualBaseData = baseData
+        virtualBaseData = DataSource.shared.visibleCells
 
         collectionView.collectionViewLayout = UICollectionViewLeftAlignedLayout()
         collectionView.delegate = self
@@ -56,8 +56,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var baseName = baseData[indexPath.item].0
-        var cellMode = baseData[indexPath.item].1
+        var baseName = DataSource.shared.visibleCells[indexPath.item].0
+        var cellMode = DataSource.shared.visibleCells[indexPath.item].1
 
         if currentTargetIndexPath != nil {
             baseName = virtualBaseData[indexPath.item].0
@@ -137,8 +137,8 @@ extension ViewController: PhotoCellDelegate {
             return
         }
 
-        baseData[indexPath.item].1 = cellMode
-        virtualBaseData = baseData
+        DataSource.shared.visibleCells[indexPath.item].1 = cellMode
+        virtualBaseData = DataSource.shared.visibleCells
 
         collectionView.reloadItems(at: [indexPath])
     }
